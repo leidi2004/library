@@ -22,43 +22,22 @@
                 <p class="author">hdhhdh</p>
                 <p class="num-pages">300</p>
                 <p class="status">Read</p>
-                <button class="btn-delete">Delete</button>
-            </div>
-            <div class="grid-item">
-                <p class="title">Fake Empire</p>
-                <p class="author">hdhhdh</p>
-                <p class="num-pages">300</p>
-                <p class="status">Read</p>
-                <button class="btn-delete">Delete</button>
-            </div>
-            <div class="grid-item">
-                <p class="title">Fake Empire</p>
-                <p class="author">hdhhdh</p>
-                <p class="num-pages">300</p>
-                <p class="status">Read</p>
-                <button class="btn-delete">Delete</button>
-            </div>
-            <div class="grid-item">
-                <p class="title">Fake Empire</p>
-                <p class="author">hdhhdh</p>
-                <p class="num-pages">300</p>
-                <p class="status">Read</p>
-                <button class="btn-delete">Delete</button>
+                <button type="button" class="btn-delete">Delete</button>
             </div>
         </div>
-        
     </main>
-    <form action="" class="hidden-form">
-        <button class="btn-close">X</button>
+    <form class="hidden-form">
+        <button type="button" class="btn-close">X</button>
         <h3>Add a new book!</h3>
         <label for="author">Author</label>
-        <input type="text" name="author" id="author" placeholder="C.W Farnsworth" required>
+        <input type="text" name="author" id="author" placeholder="C.W Farnsworth" required class="book-author">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" placeholder="Fake Empire" required>
+        <input type="text" name="title" id="title" placeholder="Fake Empire" required class="book-name">
         <label for="num-pages">Number of pages</label>
-        <input type="number" min="1" name="num-pages" id="num-pages" placeholder="300" required>
+        <input type="number" min="1" name="num-pages" id="num-pages" placeholder="300" required class="book-num-pages">
         <label for="status">Have you read it? <input type="checkbox" name="status" id="status"></label>
-        <input type="submit" value="Add">
+        <input type="hidden" name="bookId" class="book-id">
+        <input type="submit" value="Add" class="btn-add-book" class="book-status">
     </form>
     <script src="script.js"></script>
 </body>
