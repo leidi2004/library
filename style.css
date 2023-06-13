@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #FAFAF9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #003366;
+    color: #dddddd;
+    margin-bottom: 1rem;
+}
+
+.btn-add{
+    display: block;
+    background-color: inherit;
+    border: 1px solid green;
+    border-radius: 0.2rem;
+    margin: 2rem auto;
+    width: 40%;
+    padding: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+.btn-add:hover{
+    background-color: seagreen;
+    border-color: darkgreen;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-flow: dense;
+    gap: 1rem;
+    margin: 1rem;
+    padding: 0.5rem;
+}
+
+.grid-item{
+    background-color: ghostwhite;
+    border-radius: 0.1rem;
+    padding: 1.3rem 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.grid-item:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    cursor: pointer;
+}
+
+.title{
+    font-weight: 600;
+}
+
+.author{
+    font-style: italic;
+    font-weight: 500;
+}
+
+.status{
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.not-read{
+    color: darkorange;
+}
+
+.read{
+    color: seagreen;
+}
+
+.btn-delete{
+    width: 40%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.12rem;
+    background-color: #D50000;
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn-delete:hover{
+    background-color: #aa0202;
+    cursor: pointer;
+}
+
+.floating-form{
+    width: 45%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    padding: 1rem;
+    position: absolute;
+    bottom: 5%;
+    left: 27%;
+}
+
+h3{
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+input{
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+}
+
+
+
