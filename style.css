@@ -114,16 +114,32 @@ header{
     width: 60%;
     max-width: 300px;
     margin: 2rem auto;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     background-color: ghostwhite;
-    padding: 1rem;
     position: absolute;
     bottom: 10%;
     left: 25%;
     right: 25%;
     border-radius: 0.1rem;
-    transition: opacity 0.3s ease-in;
+}
+
+.btn-close{
+    width: 10%;
+    padding: 0.3rem;
+    align-self: flex-end;
+    border: none;
+    border-radius: 0.1rem;
+    background-color: #aa0202;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+
+.btn-close:hover{
+    background-color: #D50000;
 }
 
 h3{
@@ -163,7 +179,7 @@ input[type = "submit"]:hover{
     cursor: pointer;
 }
 
-body-lostfocus{
+.body-lostfocus{
     background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -174,6 +190,7 @@ body-lostfocus{
 
 .btn-delete-lostfocus{
     background-color: #aa0202;
+    color: #dddddd;
 }
 
 
