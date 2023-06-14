@@ -118,6 +118,10 @@ header{
     cursor: pointer;
 }
 
+.btn-toggle-lostfocus{
+    background-color: #2e014e;
+}
+
 .hidden-form{
     display: none;
     opacity: 0;

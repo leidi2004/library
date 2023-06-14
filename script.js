@@ -1,8 +1,6 @@
 const btnAdd = document.querySelector(".btn-add");
 const hiddenForm = document.querySelector(".hidden-form");
 const body = document.querySelector("body");
-const gridItems = document.querySelectorAll(".grid-item");
-const btnDelete = document.querySelectorAll(".btn-delete");
 const btnClose = document.querySelector(".btn-close");
 const btnAddBook = document.querySelector(".btn-add-book");
 const checkBookStatus = document.querySelector(".book-status");
@@ -27,9 +25,9 @@ btnAddBook.addEventListener("click", (event) => {
     let bookNumPages = document.querySelector(".book-num-pages").value;
     let inputID = document.querySelector(".book-id").value = pos;
 
-    if(checkBookStatus.checked){
+    if (checkBookStatus.checked) {
         bookStatus = "Read";
-    }else if(checkBookStatus.checked === false){
+    } else if (checkBookStatus.checked === false) {
         bookStatus = "Not Read"
     }
 
@@ -50,14 +48,23 @@ btnClose.addEventListener("click", removeForm);
 
 
 function removeForm() {
+    const gridItems = document.querySelectorAll(".grid-item");
+    const btnDelete = document.querySelectorAll(".btn-delete");
+    const btnToggleStatus = document.querySelectorAll(".btn-toggle");
+
     body.classList.remove("body-lostfocus");
     hiddenForm.classList.remove("floating-form");
-    gridItems.forEach(gridItems => {
-        gridItems.classList.remove("grid-item-lostfocus");
+
+    gridItems.forEach(function (gridItem) {
+        gridItem.classList.remove("grid-item-lostfocus");
     });
 
-    btnDelete.forEach(btnDelete => {
-        btnDelete.classList.remove("btn-delete-lostfocus");
+    btnDelete.forEach(function (btn) {
+        btn.classList.remove("btn-delete-lostfocus");
+    });
+
+    btnToggleStatus.forEach(function (btn) {
+        btn.classList.remove("btn-toggle-lostfocus");
     });
 }
 
@@ -97,13 +104,39 @@ function showBooks() {
     btnDelete.innerHTML = "Delete";
     grid.appendChild(btnDelete);
 
-    console.log(arrayBooks[newBookPos].bookID);
+    btnDelete.addEventListener("click", (event) => {
+        const index = event.target.getAttribute('data-index');
+        arrayBooks.splice(index, 1);
+        console.log(index);
+        console.log(arrayBooks);
+        grid.remove();
+    });
+
 }
 
 function showForm() {
+    const gridItems = document.querySelectorAll(".grid-item");
+    const btnDelete = document.querySelectorAll(".btn-delete");
+    const btnToggleStatus = document.querySelectorAll(".btn-toggle");
+
     body.classList.add("body-lostfocus");
     hiddenForm.classList.add("floating-form");
+
+    gridItems.forEach(function (gridItem) {
+        gridItem.classList.add("grid-item-lostfocus");
+    });
+
+    btnDelete.forEach(function (btn) {
+        btn.classList.add("btn-delete-lostfocus");
+    });
+
+    btnToggleStatus.forEach(function (btn) {
+        btn.classList.add("btn-toggle-lostfocus");
+    });
 }
+
+
+
 
 
 
