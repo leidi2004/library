@@ -17,13 +17,7 @@
     <main>
         <button class="btn-add">Add book</button>
         <div class="grid-container">
-            <div class="grid-item">
-                <p class="title">Fake Empire</p>
-                <p class="author">hdhhdh</p>
-                <p class="num-pages">300</p>
-                <p class="status">Read</p>
-                <button type="button" class="btn-delete">Delete</button>
-            </div>
+        
         </div>
     </main>
     <form class="hidden-form">
@@ -35,9 +29,9 @@
         <input type="text" name="title" id="title" placeholder="Fake Empire" required class="book-name">
         <label for="num-pages">Number of pages</label>
         <input type="number" min="1" name="num-pages" id="num-pages" placeholder="300" required class="book-num-pages">
-        <label for="status">Have you read it? <input type="checkbox" name="status" id="status"></label>
+        <label for="status">Have you read it? <input type="checkbox" name="status" id="status" class="book-status"></label>
         <input type="hidden" name="bookId" class="book-id">
-        <input type="submit" value="Add" class="btn-add-book" class="book-status">
+        <input type="submit" value="Add" class="btn-add-book">
     </form>
     <script src="script.js"></script>
 </body>

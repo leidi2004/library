@@ -5,8 +5,7 @@ const gridItems = document.querySelectorAll(".grid-item");
 const btnDelete = document.querySelectorAll(".btn-delete");
 const btnClose = document.querySelector(".btn-close");
 const btnAddBook = document.querySelector(".btn-add-book");
-//const bookStatus = document.querySelector(".book-status").value;
-const bookStatus = "read";
+const checkBookStatus = document.querySelector(".book-status");
 const arrayBooks = [];
 
 
@@ -20,21 +19,27 @@ function Book(bookName, authorName, numPages, bookStatus, bookID) {
 
 // This variable stores the position of each book in the array. It is used when the user triggers the delete action. The position is saved in a hidden input field in the HTML
 let pos = 0;
-
+let bookStatus;
 btnAddBook.addEventListener("click", (event) => {
     event.preventDefault();
     let bookName = document.querySelector(".book-name").value;
     let bookAuthor = document.querySelector(".book-author").value;
     let bookNumPages = document.querySelector(".book-num-pages").value;
-    const newBook = new Book(bookName, bookAuthor, bookNumPages, bookStatus, pos);
+    let inputID = document.querySelector(".book-id").value = pos;
 
-    console.log("added");
-    console.log(arrayBooks);
+    if(checkBookStatus.checked){
+        bookStatus = "Read";
+    }else if(checkBookStatus.checked === false){
+        bookStatus = "Not Read"
+    }
+
+    const newBook = new Book(bookName, bookAuthor, bookNumPages, bookStatus, inputID);
+
     arrayBooks.push(newBook);
-    pos++;
     clearForm();
     removeForm();
     showBooks();
+    pos++;
 });
 
 
@@ -42,16 +47,7 @@ btnAdd.addEventListener("click", showForm);
 
 btnClose.addEventListener("click", removeForm);
 
-function showForm() {
-    body.classList.add("body-lostfocus");
-    hiddenForm.classList.add("floating-form");
-    gridItems.forEach(gridItems => {
-        gridItems.classList.add("grid-item-lostfocus");
-    });
-    btnDelete.forEach(btnDelete => {
-        btnDelete.classList.add("btn-delete-lostfocus");
-    });
-}
+
 
 function removeForm() {
     body.classList.remove("body-lostfocus");
@@ -91,15 +87,22 @@ function showBooks() {
     pNumPages.innerHTML = arrayBooks[newBookPos].numPages;
     grid.appendChild(pNumPages);
 
-    let pStatus = document.createElement("p");
-    pStatus.classList.add("status");
-    pStatus.innerHTML = arrayBooks[newBookPos].bookStatus;
-    grid.appendChild(pStatus);
+    let btnToggleStatus = document.createElement("button");
+    btnToggleStatus.classList.add("btn-toggle");
+    btnToggleStatus.innerHTML = arrayBooks[newBookPos].bookStatus;
+    grid.appendChild(btnToggleStatus);
 
     let btnDelete = document.createElement("button");
     btnDelete.classList.add("btn-delete");
     btnDelete.innerHTML = "Delete";
     grid.appendChild(btnDelete);
+
+    console.log(arrayBooks[newBookPos].bookID);
+}
+
+function showForm() {
+    body.classList.add("body-lostfocus");
+    hiddenForm.classList.add("floating-form");
 }
 
 
