@@ -112,6 +112,21 @@ function showBooks() {
         grid.remove();
     });
 
+    btnToggleStatus.setAttribute('data-index', newBookPos);
+    btnToggleStatus.addEventListener("click", (event) => {
+        const index = event.target.getAttribute('data-index');
+        const book = arrayBooks[index];
+
+        if (book.bookStatus === "Read") {
+            book.bookStatus = "Not Read";
+            btnToggleStatus.innerHTML = "Not Read";
+            console.log(arrayBooks);
+        } else if (book.bookStatus === "Not Read") {
+            book.bookStatus = "Read";
+            btnToggleStatus.innerHTML = "Read";
+            console.log(arrayBooks);
+        }
+    });
 }
 
 function showForm() {
@@ -134,10 +149,3 @@ function showForm() {
         btn.classList.add("btn-toggle-lostfocus");
     });
 }
-
-
-
-
-
-
-
