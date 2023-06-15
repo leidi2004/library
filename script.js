@@ -1,3 +1,4 @@
+//Seleccionando elementos del DOM
 const btnAdd = document.querySelector(".btn-add");
 const hiddenForm = document.querySelector(".hidden-form");
 const body = document.querySelector("body");
@@ -5,6 +6,11 @@ const btnClose = document.querySelector(".btn-close");
 const btnAddBook = document.querySelector(".btn-add-book");
 const checkBookStatus = document.querySelector(".book-status");
 const arrayBooks = [];
+
+//posicion del objeto en el array
+let pos = 0;
+//guardar el estado obtenido en el checkbox
+let bookStatus;
 
 
 function Book(bookName, authorName, numPages, bookStatus, bookID) {
@@ -15,10 +21,18 @@ function Book(bookName, authorName, numPages, bookStatus, bookID) {
     this.bookID = bookID;
 }
 
-// This variable stores the position of each book in the array. It is used when the user triggers the delete action. The position is saved in a hidden input field in the HTML
-let pos = 0;
-let bookStatus;
-btnAddBook.addEventListener("click", (event) => {
+//Manejo de eventos
+btnAddBook.addEventListener("click", addBook);
+btnAdd.addEventListener("click", showForm);
+btnClose.addEventListener("click", removeForm);
+
+/**
+ * Funciones principales 
+*/
+
+//crear objeto libro con los valores del formulario
+function addBook(event){
+    //Prevenir que se envie el formulario por defecto
     event.preventDefault();
     let bookName = document.querySelector(".book-name").value;
     let bookAuthor = document.querySelector(".book-author").value;
@@ -36,45 +50,12 @@ btnAddBook.addEventListener("click", (event) => {
     arrayBooks.push(newBook);
     clearForm();
     removeForm();
-    showBooks();
+    createGrid();
     pos++;
-});
-
-
-btnAdd.addEventListener("click", showForm);
-
-btnClose.addEventListener("click", removeForm);
-
-
-
-function removeForm() {
-    const gridItems = document.querySelectorAll(".grid-item");
-    const btnDelete = document.querySelectorAll(".btn-delete");
-    const btnToggleStatus = document.querySelectorAll(".btn-toggle");
-
-    body.classList.remove("body-lostfocus");
-    hiddenForm.classList.remove("floating-form");
-
-    gridItems.forEach(function (gridItem) {
-        gridItem.classList.remove("grid-item-lostfocus");
-    });
-
-    btnDelete.forEach(function (btn) {
-        btn.classList.remove("btn-delete-lostfocus");
-    });
-
-    btnToggleStatus.forEach(function (btn) {
-        btn.classList.remove("btn-toggle-lostfocus");
-    });
 }
 
-function clearForm() {
-    document.querySelector(".book-name").value = "";
-    document.querySelector(".book-author").value = "";
-    document.querySelector(".book-num-pages").value = "";
-}
-
-function showBooks() {
+//crear grid para el ultimo elemento que fue agregado en el array
+function createGrid() {
     newBookPos = arrayBooks.length - 1;
     let grid = document.createElement("div");
     grid.classList.add("grid-item");
@@ -104,6 +85,8 @@ function showBooks() {
     btnDelete.innerHTML = "Delete";
     grid.appendChild(btnDelete);
 
+    //configurar el event listener de eliminar con el indice
+    //del objeto en el grid clicado
     btnDelete.addEventListener("click", (event) => {
         const index = event.target.getAttribute('data-index');
         arrayBooks.splice(index, 1);
@@ -112,11 +95,14 @@ function showBooks() {
         grid.remove();
     });
 
+    //Asignar a data index del boton eliminar de cada grid el
+    //la posicion en el arrade cada objeto creado
     btnToggleStatus.setAttribute('data-index', newBookPos);
     btnToggleStatus.addEventListener("click", (event) => {
         const index = event.target.getAttribute('data-index');
         const book = arrayBooks[index];
 
+        //Toggle status y contenido del boton
         if (book.bookStatus === "Read") {
             book.bookStatus = "Not Read";
             btnToggleStatus.innerHTML = "Not Read";
@@ -148,4 +134,36 @@ function showForm() {
     btnToggleStatus.forEach(function (btn) {
         btn.classList.add("btn-toggle-lostfocus");
     });
+}
+
+//Remover clases agregadas al cerrar el formulario
+function removeForm() {
+    const gridItems = document.querySelectorAll(".grid-item");
+    const btnDelete = document.querySelectorAll(".btn-delete");
+    const btnToggleStatus = document.querySelectorAll(".btn-toggle");
+
+    body.classList.remove("body-lostfocus");
+    hiddenForm.classList.remove("floating-form");
+
+    gridItems.forEach(function (gridItem) {
+        gridItem.classList.remove("grid-item-lostfocus");
+    });
+
+    btnDelete.forEach(function (btn) {
+        btn.classList.remove("btn-delete-lostfocus");
+    });
+
+    btnToggleStatus.forEach(function (btn) {
+        btn.classList.remove("btn-toggle-lostfocus");
+    });
+
+}
+
+//Para mostrar campos de formulario en estado original
+function clearForm() {
+    document.querySelector(".book-name").value = "";
+    document.querySelector(".book-author").value = "";
+    document.querySelector(".book-num-pages").value = "";
+    const checkboxStatus = document.querySelector(".book-status");
+    checkboxStatus.checked = false;
 }

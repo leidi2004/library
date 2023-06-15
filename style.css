@@ -73,19 +73,6 @@ header{
     font-weight: 500;
 }
 
-.status{
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.not-read{
-    color: darkorange;
-}
-
-.read{
-    color: seagreen;
-}
-
 .btn-delete, .btn-toggle{
     display: inline-block;
     margin: 0.5rem;
@@ -127,12 +114,10 @@ header{
     opacity: 0;
 }
 
-/*Classes that are added in the js file*/
-
 .floating-form{
     display: block;
     opacity: 1;
-    width: 60%;
+    width: 70%;
     max-width: 300px;
     margin: 2rem auto;
     padding: 1rem;
@@ -140,9 +125,9 @@ header{
     flex-direction: column;
     background-color: ghostwhite;
     position: absolute;
-    bottom: 10%;
-    left: 25%;
-    right: 25%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 0.1rem;
 }
 
